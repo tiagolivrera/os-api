@@ -46,13 +46,15 @@ public class ClienteService {
     public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
         Cliente oldObj = findById(id);
 
+        // nao pode atualizar o CPF usando um CPF que ja existe na base de dados
         if(findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
             throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
         }
 
         oldObj.setNome(objDTO.getNome());
-        oldObj.setCpf(objDTO.getNome());
+        oldObj.setCpf(objDTO.getCpf());
         oldObj.setTelefone(objDTO.getTelefone());
+
         return repository.save(oldObj);
     }
 
@@ -68,7 +70,7 @@ public class ClienteService {
         Cliente obj = findById(id);
 
         if(obj.getList().size() > 0) {
-            throw new DataIntegrityViolationException("Pessoa possui Ordens de Serviço, não pode ser deletado!");
+            throw new DataIntegrityViolationException("Cliente possui Ordens de Serviço, não pode ser deletado!");
         }
 
         repository.deleteById(id);

@@ -62,7 +62,7 @@ public class TecnicoService {
     public void delete(Integer id) {
         Tecnico obj = findById(id); // se nao houver um tecnico nesse id, lanca a excecao
         if(obj.getList().size() > 0) { // se o tecnico tiver ordens de servico, nao pode deletar
-            throw new DataIntegrityViolationException("O técnico possui ordens de serviço, não pode ser deletado!");
+            throw new DataIntegrityViolationException("Técnico possui Ordens de Serviço, não pode ser deletado!");
         }
         repository.deleteById(id);
     }
