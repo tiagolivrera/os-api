@@ -12,6 +12,4 @@ public class ObjectNotFoundExcecption extends RuntimeException {
         super(message, cause);
     }
 
-    
-    
 }

@@ -14,17 +14,17 @@ public class TecnicoDTO implements Serializable {
     // se o tecnico tivesse usuario e senha, nao colocaria no DTO para nao expor
 
     private Integer id;
-    
+
     @NotEmpty(message = "O campo NOME é requerido")
     private String nome;
-    
+
     @CPF
     @NotEmpty(message = "O campo CPF é requerido")
     private String cpf;
 
     @NotEmpty(message = "O campo TELEFONE é requerido")
     private String telefone;
-    
+
     public TecnicoDTO() {
     }
 
@@ -66,7 +66,5 @@ public class TecnicoDTO implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
-    
+
 }

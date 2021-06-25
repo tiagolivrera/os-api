@@ -20,12 +20,10 @@ public abstract class Pessoa implements Serializable {
     @CPF
     private String cpf;
     private String telefone;
-    
-    
+
     public Pessoa() {
         super();
     }
-
 
     public Pessoa(Integer id, String nome, String cpf, String telefone) {
         this.id = id;
@@ -34,46 +32,37 @@ public abstract class Pessoa implements Serializable {
         this.telefone = telefone;
     }
 
-
     public Integer getId() {
         return id;
     }
-
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-
     public String getNome() {
         return nome;
     }
-
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-
     public String getCpf() {
         return cpf;
     }
-
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-
     public String getTelefone() {
         return telefone;
     }
 
-
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
 
     @Override
     public int hashCode() {
@@ -83,7 +72,6 @@ public abstract class Pessoa implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -107,8 +95,4 @@ public abstract class Pessoa implements Serializable {
         return true;
     }
 
-    
-
-
-    
 }

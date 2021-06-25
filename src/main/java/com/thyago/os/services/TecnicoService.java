@@ -18,9 +18,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TecnicoService {
-    
+
     @Autowired
-    private TecnicoRepository repository; // a camada repository entra em contato com o db, entao instancia ele para recuperar as info do tecnico
+    private TecnicoRepository repository; // a camada repository entra em contato com o db, entao instancia ele para
+                                          // recuperar as info do tecnico
 
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -28,16 +29,16 @@ public class TecnicoService {
     public Tecnico findById(Integer id) {
         Optional<Tecnico> obj = repository.findById(id); // optional: dado o id, o tecnico pode existir ou n
         return obj.orElseThrow(() -> new ObjectNotFoundExcecption(
-            "Objeto não encontrado! Id: " + id + ", Tipo: " + Tecnico.class.getName()));
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Tecnico.class.getName()));
     }
 
     public List<Tecnico> findAll() {
         return repository.findAll();
     }
-    
+
     public Tecnico create(TecnicoDTO objDTO) {
         // verifica se existe um tecnico com o mesmo cpf no banco de dados
-        if(findByCPF(objDTO) != null) {
+        if (findByCPF(objDTO) != null) {
             throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
         }
         Tecnico newObj = new Tecnico(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getTelefone());
@@ -48,7 +49,7 @@ public class TecnicoService {
         Tecnico oldObj = findById(id);
 
         // nao pode atualizar o CPF usando um CPF que ja existe na base de dados
-        if(findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
+        if (findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
             throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
         }
 
@@ -61,19 +62,19 @@ public class TecnicoService {
 
     public void delete(Integer id) {
         Tecnico obj = findById(id); // se nao houver um tecnico nesse id, lanca a excecao
-        if(obj.getList().size() > 0) { // se o tecnico tiver ordens de servico, nao pode deletar
+        if (obj.getList().size() > 0) { // se o tecnico tiver ordens de servico, nao pode deletar
             throw new DataIntegrityViolationException("Técnico possui Ordens de Serviço, não pode ser deletado!");
         }
         repository.deleteById(id);
     }
 
-    // busca uma pessoa pelo CPF 
+    // busca uma pessoa pelo CPF
     private Pessoa findByCPF(TecnicoDTO objDTO) {
         Pessoa obj = pessoaRepository.findByCPF(objDTO.getCpf());
         if (obj != null) {
             return obj;
-        } return null;
+        }
+        return null;
     }
 
-    
 }

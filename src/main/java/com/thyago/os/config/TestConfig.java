@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("test")
-public class TestConfig {  
+public class TestConfig {
 
     @Autowired
     private DBService dbService;
@@ -17,5 +17,5 @@ public class TestConfig {
     @Bean // executa esse metodo toda vez que um objeto dessa classe for instanciado
     public void instanciaDB() {
         this.dbService.instanciaDB();
-    }    
+    }
 }

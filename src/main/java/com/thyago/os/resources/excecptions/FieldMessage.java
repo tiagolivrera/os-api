@@ -2,7 +2,7 @@ package com.thyago.os.resources.excecptions;
 
 import java.io.Serializable;
 
-public class FieldMessage implements Serializable{
+public class FieldMessage implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,5 +28,5 @@ public class FieldMessage implements Serializable{
 
     public void setMessage(String message) {
         this.message = message;
-    }    
+    }
 }

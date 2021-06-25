@@ -27,9 +27,8 @@ public class ClienteService {
 
     public Cliente findById(Integer id) {
         Optional<Cliente> obj = repository.findById(id);
-        return obj.orElseThrow( () -> new ObjectNotFoundExcecption(
-            "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()
-        ));
+        return obj.orElseThrow(() -> new ObjectNotFoundExcecption(
+                "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
     }
 
     public List<Cliente> findAll() {
@@ -37,7 +36,7 @@ public class ClienteService {
     }
 
     public Cliente create(ClienteDTO objDTO) {
-        if(findByCPF(objDTO) != null) {
+        if (findByCPF(objDTO) != null) {
             throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
         }
         return repository.save(new Cliente(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getTelefone()));
@@ -47,7 +46,7 @@ public class ClienteService {
         Cliente oldObj = findById(id);
 
         // nao pode atualizar o CPF usando um CPF que ja existe na base de dados
-        if(findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
+        if (findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
             throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
         }
 
@@ -63,16 +62,17 @@ public class ClienteService {
 
         if (obj != null) {
             return obj;
-        } return null;
+        }
+        return null;
     }
 
     public void delete(Integer id) {
         Cliente obj = findById(id);
 
-        if(obj.getList().size() > 0) {
+        if (obj.getList().size() > 0) {
             throw new DataIntegrityViolationException("Cliente possui Ordens de Serviço, não pode ser deletado!");
         }
 
         repository.deleteById(id);
-    }    
+    }
 }

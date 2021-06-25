@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.thyago.os.domain.OS;
 
 @Repository
-public interface OSRepository extends JpaRepository<OS, Integer>{  // <Tipo, ID>
-    
+public interface OSRepository extends JpaRepository<OS, Integer> { // <Tipo, ID>
+
 }

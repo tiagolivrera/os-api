@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.thyago.os.domain.Tecnico;
 
 @Repository
-public interface TecnicoRepository extends JpaRepository<Tecnico, Integer>{
+public interface TecnicoRepository extends JpaRepository<Tecnico, Integer> {
 
     // verifica os cpf's entre os tecnicos que estao no banco de dados
     @Query("SELECT obj FROM Tecnico obj WHERE obj.cpf =:cpf")
-    Tecnico findByCPF(@Param("cpf") String cpf) ;
-    
+    Tecnico findByCPF(@Param("cpf") String cpf);
+
 }

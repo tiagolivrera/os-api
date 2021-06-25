@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("dev")
-public class DevConfig {  
+public class DevConfig {
 
     @Autowired
     private DBService dbService;
@@ -20,10 +20,10 @@ public class DevConfig {
 
     @Bean // executa esse metodo toda vez que um objeto dessa classe for instanciado
     public boolean instanciaDB() {
-        
-        if(ddl.equals("create")) {
+
+        if (ddl.equals("create")) {
             this.dbService.instanciaDB();
         }
         return false;
-    }    
+    }
 }

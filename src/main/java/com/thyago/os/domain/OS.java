@@ -32,8 +32,7 @@ public class OS {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    
-    
+
     public OS() {
         super();
         this.setDataAbertura(LocalDateTime.now());
@@ -41,9 +40,7 @@ public class OS {
         this.setStatus(Status.ABERTO);
     }
 
-
-    public OS(Integer id, Prioridade prioridade,
-            String observacoes, Status status, Tecnico tecnico, Cliente cliente) {
+    public OS(Integer id, Prioridade prioridade, String observacoes, Status status, Tecnico tecnico, Cliente cliente) {
         this.id = id;
         this.setDataAbertura(LocalDateTime.now()); // data de abertura da ordem de servico no momento que o obj e criado
         this.prioridade = (prioridade == null) ? 0 : prioridade.getCod();
@@ -53,86 +50,69 @@ public class OS {
         this.cliente = cliente;
     }
 
-
     public Integer getId() {
         return id;
     }
-
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-
     public LocalDateTime getDataAbertura() {
         return dataAbertura;
     }
-
 
     public void setDataAbertura(LocalDateTime dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-
     public LocalDateTime getDataFechamento() {
         return dataFechamento;
     }
-
 
     public void setDataFechamento(LocalDateTime dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
-
     public Prioridade getPrioridade() {
         return Prioridade.toEnum(this.prioridade);
     }
-
 
     public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade.getCod();
     }
 
-
     public String getObservacoes() {
         return observacoes;
     }
-
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
 
-
     public Status getStatus() {
         return Status.toEnum(this.status);
     }
-
 
     public void setStatus(Status status) {
         this.status = status.getCod();
     }
 
-
     public Tecnico getTecnico() {
         return tecnico;
     }
-
 
     public void setTecnico(Tecnico tecnico) {
         this.tecnico = tecnico;
     }
 
-
     public Cliente getCliente() {
         return cliente;
     }
 
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
 
     @Override
     public int hashCode() {
@@ -141,7 +121,6 @@ public class OS {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -158,5 +137,5 @@ public class OS {
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }   
+    }
 }

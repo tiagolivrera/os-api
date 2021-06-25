@@ -8,7 +8,7 @@ public class StandardError implements Serializable {
 
     private Long timestamp;
     private Integer status;
-    private String error;    
+    private String error;
 
     public StandardError() {
     }
@@ -42,8 +42,5 @@ public class StandardError implements Serializable {
     public void setError(String error) {
         this.error = error;
     }
-    
 
-    
-    
 }

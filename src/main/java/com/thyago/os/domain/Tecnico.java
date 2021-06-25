@@ -29,5 +29,5 @@ public class Tecnico extends Pessoa {
 
     public void setList(List<OS> list) {
         this.list = list;
-    }    
+    }
 }
